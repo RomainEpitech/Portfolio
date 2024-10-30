@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Project from './components/Project'
 import StarryBackground from './components/StarryBackground'
+import Timeline from './components/Timejine'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <StarryBackground />
       <Hero />
       <About />
+      <Timeline />
       <Project />
     </>
   )
