@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const Timeline = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [lineHeight, setLineHeight] = useState(0);
+    const timelineContentRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
+                    const lastCard = timelineContentRef.current.lastElementChild;
+                    const contentRect = timelineContentRef.current.getBoundingClientRect();
+                    const lastCardRect = lastCard.getBoundingClientRect();
+                    const height = lastCardRect.bottom - contentRect.top;
+                    setLineHeight(height);
                 }
             },
             { threshold: 0.1 }
@@ -19,27 +26,51 @@ const Timeline = () => {
             observer.observe(timelineElement);
         }
 
-        return () => observer.disconnect();
-    }, []);
+        const updateHeight = () => {
+            if (timelineContentRef.current && isVisible) {
+                const lastCard = timelineContentRef.current.lastElementChild;
+                const contentRect = timelineContentRef.current.getBoundingClientRect();
+                const lastCardRect = lastCard.getBoundingClientRect();
+                const height = lastCardRect.bottom - contentRect.top;
+                setLineHeight(height);
+            }
+        };
+
+        window.addEventListener('resize', updateHeight);
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('resize', updateHeight);
+        };
+    }, [isVisible]);
 
     const skills = [
         {
-            year: "2022",
-            title: "React.js",
-            description: "Maîtrise des composants, hooks, et gestion d'état",
-            color: "from-purple-400 to-purple-900"
+            year: "10/2023",
+            title: "POO PHP",
+            description: "Apprentissage de l'orienter objet php.",
+            color: "from-purple-400 to-purple-900",
+            planetColor: "from-purple-400 via-purple-600 to-purple-900"
         },
         {
-            year: "2023",
-            title: "Node.js",
-            description: "Développement backend et API REST",
-            color: "from-emerald-400 to-emerald-900"
+            year: "12/2023",
+            title: "Gestion BDD",
+            description: "Apprentissage architecture base de donnée",
+            color: "from-emerald-400 to-emerald-900",
+            planetColor: "from-emerald-400 via-emerald-600 to-emerald-900"
         },
         {
-            year: "2024",
-            title: "Next.js",
-            description: "Applications full-stack et SSR",
-            color: "from-blue-400 to-blue-900"
+            year: "02/2024",
+            title: "Frameworks",
+            description: "Maitrise des frameworks php et JS",
+            color: "from-blue-400 to-blue-900",
+            planetColor: "from-blue-400 via-blue-600 to-blue-900"
+        },
+        {
+            year: "05/2024",
+            title: "Web 3D",
+            description: "Apprentissage Three.js et WEBGL",
+            color: "from-blue-400 to-blue-900",
+            planetColor: "from-blue-400 via-blue-600 to-blue-900"
         }
     ];
 
@@ -55,19 +86,41 @@ const Timeline = () => {
         }
     };
 
+    const Planet = ({ className, gradient, reverse }) => (
+        <div className={`hidden md:flex items-center justify-center ${className}`}>
+            <div className="absolute w-full h-full rounded-full bg-black/20 blur-xl transform scale-110" />
+            <div className={`w-full h-full rounded-full absolute bg-gradient-radial ${gradient} animate-${reverse ? 'selfRotate-reverse' : 'selfRotate'} shadow-[inset_-25px_-25px_40px_rgba(0,0,0,0.8)]`}>
+                <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.2)_0%,transparent_50%)]" />
+                <div className="absolute -inset-1 rounded-full opacity-20 bg-[radial-gradient(circle_at_70%_70%,#fff_0%,transparent_25%)] animate-glow" />
+                <div className="absolute h-1/4 w-1/4 rounded-full bg-black/20 top-1/4 left-1/4 blur-sm" />
+            </div>
+        </div>
+    );
+
     return (
         <div id="timeline" className="relative min-h-screen p-4 md:p-8 overflow-hidden">
-            <div className={`absolute left-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-purple-500/30 to-transparent transform -translate-x-1/2
-                ${isVisible ? 'animate-glow' : ''}`}>
-                <div className={`absolute top-0 w-full h-full bg-gradient-to-b from-purple-400 via-pink-400 to-blue-400
-                    ${isVisible ? 'animate-line-descent' : 'opacity-0'}`} />
+            <div 
+                className={`absolute left-1/2 w-0.5 bg-gradient-to-b from-purple-500/30 via-purple-500/30 to-transparent transform -translate-x-1/2
+                    ${isVisible ? 'animate-glow' : ''}`}
+                style={{ 
+                    height: `${lineHeight}px`,
+                    top: '0'
+                }}
+            >
+                <div 
+                    className={`absolute top-0 w-full bg-gradient-to-b from-purple-400 via-pink-400 to-blue-400
+                        ${isVisible ? 'animate-line-descent' : 'opacity-0'}`}
+                    style={{ height: '100%' }}
+                />
             </div>
 
-            <div className="relative z-10 max-w-6xl mx-auto">
+            <div ref={timelineContentRef} className="relative z-10 max-w-6xl mx-auto">
                 {skills.map((skill, index) => (
                     <motion.div
                         key={skill.title}
-                        className={`relative flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center mb-16`}
+                        className={`relative flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center ${
+                            index === skills.length - 1 ? 'mb-0' : 'mb-16'
+                        }`}
                         initial="hidden"
                         animate={isVisible ? "visible" : "hidden"}
                         variants={cardVariants}
@@ -97,6 +150,20 @@ const Timeline = () => {
                                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/0 via-pink-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </motion.div>
                         </div>
+
+                        {index % 2 === 0 ? (
+                            <Planet 
+                                className="absolute w-24 h-24 right-0 top-0 animate-float-slow"
+                                gradient={skill.planetColor}
+                                reverse={index % 2 === 0}
+                            />
+                        ) : (
+                            <Planet 
+                                className="absolute w-24 h-24 left-0 top-0 animate-float"
+                                gradient={skill.planetColor}
+                                reverse={index % 2 === 0}
+                            />
+                        )}
                     </motion.div>
                 ))}
             </div>
@@ -118,13 +185,23 @@ const Timeline = () => {
                 }
 
                 @keyframes float {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-10px); }
+                    0%, 100% { transform: translateY(0) translateX(0); }
+                    50% { transform: translateY(-10px) translateX(-5px); }
+                }
+
+                @keyframes float-slow {
+                    0%, 100% { transform: translateY(0) translateX(0); }
+                    50% { transform: translateY(-15px) translateX(5px); }
                 }
 
                 @keyframes selfRotate {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
+                }
+
+                @keyframes selfRotate-reverse {
+                    from { transform: rotate(360deg); }
+                    to { transform: rotate(0deg); }
                 }
 
                 .animate-glow {
@@ -147,8 +224,16 @@ const Timeline = () => {
                     animation: float 6s infinite ease-in-out;
                 }
 
+                .animate-float-slow {
+                    animation: float-slow 8s infinite ease-in-out;
+                }
+
                 .animate-selfRotate {
                     animation: selfRotate 20s linear infinite;
+                }
+
+                .animate-selfRotate-reverse {
+                    animation: selfRotate-reverse 25s linear infinite;
                 }
             `}</style>
         </div>
