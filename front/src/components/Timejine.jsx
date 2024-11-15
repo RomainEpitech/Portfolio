@@ -3,19 +3,16 @@ import { motion } from 'framer-motion';
 
 const Timeline = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [lineHeight, setLineHeight] = useState(0);
+    const [linePosition, setLinePosition] = useState({ top: 0, height: 0 });
     const timelineContentRef = useRef(null);
+    const cardsRef = useRef([]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    const lastCard = timelineContentRef.current.lastElementChild;
-                    const contentRect = timelineContentRef.current.getBoundingClientRect();
-                    const lastCardRect = lastCard.getBoundingClientRect();
-                    const height = lastCardRect.bottom - contentRect.top;
-                    setLineHeight(height);
+                    updateLinePosition();
                 }
             },
             { threshold: 0.1 }
@@ -26,49 +23,62 @@ const Timeline = () => {
             observer.observe(timelineElement);
         }
 
-        const updateHeight = () => {
-            if (timelineContentRef.current && isVisible) {
-                const lastCard = timelineContentRef.current.lastElementChild;
-                const contentRect = timelineContentRef.current.getBoundingClientRect();
-                const lastCardRect = lastCard.getBoundingClientRect();
-                const height = lastCardRect.bottom - contentRect.top;
-                setLineHeight(height);
+        const updateLinePosition = () => {
+            if (timelineContentRef.current && cardsRef.current.length > 0) {
+                const firstCard = cardsRef.current[0];
+                const lastCard = cardsRef.current[cardsRef.current.length - 1];
+                
+                if (firstCard && lastCard) {
+                    const firstCardRect = firstCard.getBoundingClientRect();
+                    const lastCardRect = lastCard.getBoundingClientRect();
+                    const timelineRect = timelineContentRef.current.getBoundingClientRect();
+                    
+                    const top = firstCardRect.top - timelineRect.top + firstCardRect.height / 2;
+                    const height = lastCardRect.top - firstCardRect.top;
+                    
+                    setLinePosition({
+                        top: top,
+                        height: height
+                    });
+                }
             }
         };
 
-        window.addEventListener('resize', updateHeight);
+        window.addEventListener('resize', updateLinePosition);
         return () => {
             observer.disconnect();
-            window.removeEventListener('resize', updateHeight);
+            window.removeEventListener('resize', updateLinePosition);
         };
     }, [isVisible]);
 
     const skills = [
         {
-            year: "10/2023",
             title: "POO PHP",
-            description: "Apprentissage de l'orienter objet php.",
+            description: "Conception et développement orienté objet.",
             color: "from-purple-400 to-purple-900",
             planetColor: "from-purple-400 via-purple-600 to-purple-900"
         },
         {
-            year: "12/2023",
-            title: "Gestion BDD",
-            description: "Apprentissage architecture base de donnée",
+            title: "Architecture BDD",
+            description: "Conception de schémas relationnels optimisés et requêtes complexes.",
             color: "from-emerald-400 to-emerald-900",
             planetColor: "from-emerald-400 via-emerald-600 to-emerald-900"
         },
         {
-            year: "02/2024",
             title: "Frameworks",
-            description: "Maitrise des frameworks php et JS",
+            description: "Expertise frameworks php, js avec intégration d'architectures microservices.",
             color: "from-blue-400 to-blue-900",
             planetColor: "from-blue-400 via-blue-600 to-blue-900"
         },
         {
-            year: "05/2024",
             title: "Web 3D",
-            description: "Apprentissage Three.js et WEBGL",
+            description: "Création d'expériences immersives avec Three.js, animations 3D et optimisation des performances WebGL.",
+            color: "from-blue-400 to-blue-900",
+            planetColor: "from-blue-400 via-blue-600 to-blue-900"
+        },
+        {
+            title: "RGPD",
+            description: "Implémentation des normes de protection des données et sécurisation des flux d'information sensibles.",
             color: "from-blue-400 to-blue-900",
             planetColor: "from-blue-400 via-blue-600 to-blue-900"
         }
@@ -103,8 +113,8 @@ const Timeline = () => {
                 className={`absolute left-1/2 w-0.5 bg-gradient-to-b from-purple-500/30 via-purple-500/30 to-transparent transform -translate-x-1/2
                     ${isVisible ? 'animate-glow' : ''}`}
                 style={{ 
-                    height: `${lineHeight}px`,
-                    top: '0'
+                    height: `${linePosition.height}px`,
+                    top: `${linePosition.top}px`
                 }}
             >
                 <div 
@@ -118,6 +128,7 @@ const Timeline = () => {
                 {skills.map((skill, index) => (
                     <motion.div
                         key={skill.title}
+                        ref={el => cardsRef.current[index] = el}
                         className={`relative flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center ${
                             index === skills.length - 1 ? 'mb-0' : 'mb-16'
                         }`}
@@ -128,7 +139,7 @@ const Timeline = () => {
                     >
                         <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10">
                             <div className={`w-full h-full rounded-full bg-gradient-radial ${skill.color} 
-                                animate-float shadow-[inset_-2px_-2px_4px_rgba(0,0,0,0.6)]`}>
+                                shadow-[inset_-2px_-2px_4px_rgba(0,0,0,0.6)]`}>
                                 <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.3)_0%,transparent_60%)]" />
                                 <div className="absolute inset-0 bg-gradient-conic from-transparent via-white/10 to-transparent animate-selfRotate" />
                             </div>

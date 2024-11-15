@@ -146,7 +146,7 @@ const About = () => {
                             className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400"
                             variants={textVariants}
                         >
-                            Explorateur du Code Digital
+                            Romain FARINACCI
                         </motion.h1>
 
                         <motion.div 
@@ -154,15 +154,11 @@ const About = () => {
                             variants={textVariants}
                         >
                             <p className="text-base sm:text-lg md:text-xl leading-relaxed mt-6 sm:mt-8">
-                                Bienvenue dans mon univers numérique, où le développement web rencontre l'infini créatif. 
-                                Comme une étoile dans la vaste constellation du web, je brille par ma passion pour la création 
-                                d'expériences digitales uniques.
+                                Développeur fullstack passionné, mon parcours a débuté avec l'apprentissage des langages compilés comme le C et le C++. Cette base solide en programmation système m'a permis d'acquérir une compréhension approfondie des concepts fondamentaux du développement. À Epitech Marseille, j'ai élargi mes compétences vers le développement web et mobile.
                             </p>
 
                             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                                À travers ma galaxie de compétences, je navigue entre le front-end et le back-end, 
-                                créant des sites web qui transcendent les attentes terrestres. Chaque projet est 
-                                une nouvelle aventure, une opportunité de repousser les frontières du possible.
+                                Depuis septembre 2024, j'occupe un poste de développeur fullstack en alternance au sein du groupe IP-Energy, avec une forte composante DevOps. Cette expérience m'a permis de développer une expertise pointue dans la gestion des données RGPD, l'administration système, et le maintien d'infrastructures serveur. Mes responsabilités englobent tant le développement d'applications que la mise en place de bonnes pratiques de sécurité et de performance.
                             </p>
                         </motion.div>
                     </div>

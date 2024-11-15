@@ -1,0 +1,90 @@
+{
+    "projects": [
+        {
+            "title": "E-commerce Archideco",
+            "description": "Site E-boutique pour le groupe Archideco",
+            "fullDescription": "Projet de fin de notre première année au sein de la WebAcademie d'Epitech Marseille, nous devions réalisé à 5 en 6 semaines un site E-commerce pour le groupe Archideco X Mobalpa.",
+            "image": "/imgs/Archideco.png",
+            "gallery": [
+                "/imgs/Archideco_Landing.png",
+                "/imgs/Archideco_Hero.png",
+                "/imgs/Archideco_promo.png",
+                "/imgs/Archideco_product.png",
+                "/imgs/Archideco_cart.png",
+                "/imgs/Archideco_forecast.png"
+            ],
+            "tags": ["SpringBoot", "Angular", "Python", "Sql", "MongoDb", "Docker"],
+            "features": [
+                "Gestion micro-services.",
+                "Achat de produit et factures.",
+                "Mails de promotions et newsletters.",
+                "IA de prédiction de futures promotions."
+            ],
+            "githubUrl": "https://github.com/twnguydev/mobalpa",
+            "isAwardWinner": false
+        },
+        {
+            "title": "Horizon",
+            "description": "Framework php en 1.0",
+            "fullDescription": "Horizon à vu le jour en tant que simple projet d'Epitech sur 3 semaines et pourtant ce projet m'a tellement inspiré et passioné que j'ai voulu allé plus loin, Horizon est mon projet coup de coeur dans le quel je cherche a la main de faire un framework capable de repousser les limites du web PHP en offrant une liberté infinie. \b\r ",
+            "image": "/imgs/Horizon.png",
+            "gallery": [
+                "/chemin/vers/image1.jpg",
+                "/chemin/vers/image2.jpg",
+                "/chemin/vers/image3.jpg",
+                "/chemin/vers/image4.jpg"
+            ],
+            "tags": ["Bash", "Php", "Sql"],
+            "features": [
+                "Mystic: ORM.",
+                "Lucid: Templating.",
+                "Routing avancé & gestion middlewares.",
+                "Dynasty: Packages de services."
+            ],
+            "githubUrl": "https://github.com/RomainEpitech/Horizon",
+            "isAwardWinner": false
+        },
+        {
+            "title": "IA4Good",
+            "description": "IA d'analyse d'indicateur de poluants.",
+            "fullDescription": "IA4Good est un projet lauréat du hackaton Code4Sud X OnePoint de 2024. Il à était réalisé en groupe de 6 en 2 jours. IA4Good prend en compte des indices de poluants présent autours de 2 ports sur plusieurs année et permet d'avoir un détails sur ces polluants, leurs évolutions sur X périodes etc... Mais aussi de générer un rapport détaillé via pdf de compte rendu ainsi que de prévision d'évolution futures et donc des précautions et actions à mettre en place.",
+            "image": "/imgs/Code4Sud.png",
+            "gallery": [
+                "/imgs/Code4Sud_Award.jpeg",
+                "/imgs/Code4Sud_Hero.png",
+                "/imgs/Code4Sud_Data.png",
+                "/imgs/Code4Sud_Graph.png",
+                "/imgs/Code4Sud_Report.png"
+            ],
+            "tags": ["Python", "React"],
+            "features": [
+                "Analyse de donnée Python.",
+                "Génération de rapport prévisionnel.",
+                "Rendu visuel de poluants sur carte interactive.",
+                "Graphiques d'évolutions interactifs."
+            ],
+            "githubUrl": "https://github.com/RomainEpitech/Hackaton_Code4Sud",
+            "demoUrl": "https://dev.ia4sud.fr/",
+            "isAwardWinner": true,
+            "hackathonName": "Code4Sud"
+        },
+        {
+            "title": "Uniteam",
+            "description": "Application Web de gestion de salle et agenda.",
+            "fullDescription": "Lauréat d'un hackaton interne au sein d'Epitech, Uniteam est un projet visant a palié aux en jeux de problemes de gestions des disponibilitées des salles, des emploies du temps etc. Uniteam propose donc de réserver des salles pour des groupes de personnes ou pour des entretiens, et d'observer a la fois son emploie du temps personnel ainsi que les salles disponibles à la réservations pour X durée.",
+            "image": "/imgs/Uniteam.avif",
+            "gallery": [
+                "/imgs/Uniteam_Calendar.avif"
+            ],
+            "tags": ["Python", "React", "Supabase", "Docker"],
+            "features": [
+                "Calendrier interactif.",
+                "Gestion d'évenements.",
+                "Notifications temps réel."
+            ],
+            "githubUrl": "https://github.com/twnguydev/hackaton-project",
+            "isAwardWinner": true,
+            "hackathonName": "Epitech X LaBriqueterie"
+        }
+    ]
+}
