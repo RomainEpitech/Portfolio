@@ -45,6 +45,27 @@
             "isAwardWinner": false
         },
         {
+            "title": "MindCare",
+            "description": "Plateforme rendez-vous psychiatre en ligne.",
+            "fullDescription": " ",
+            "image": "/imgs/mindcare.webp",
+            "gallery": [
+                "/chemin/vers/image1.jpg",
+                "/chemin/vers/image2.jpg",
+                "/chemin/vers/image3.jpg",
+                "/chemin/vers/image4.jpg"
+            ],
+            "tags": ["sql", "postgres", "Python", "Angular", "SpringBoot", "Docker", "MongoDb"],
+            "features": [
+                "Mystic: ORM.",
+                "Lucid: Templating.",
+                "Routing avancé & gestion middlewares.",
+                "Dynasty: Packages de services."
+            ],
+            "githubUrl": "https://github.com/RomainEpitech/Horizon",
+            "isAwardWinner": false
+        },
+        {
             "title": "IA4Good",
             "description": "IA d'analyse d'indicateur de poluants.",
             "fullDescription": "IA4Good est un projet lauréat du hackaton Code4Sud X OnePoint de 2024. Il à était réalisé en groupe de 6 en 2 jours. IA4Good prend en compte des indices de poluants présent autours de 2 ports sur plusieurs année et permet d'avoir un détails sur ces polluants, leurs évolutions sur X périodes etc... Mais aussi de générer un rapport détaillé via pdf de compte rendu ainsi que de prévision d'évolution futures et donc des précautions et actions à mettre en place.",

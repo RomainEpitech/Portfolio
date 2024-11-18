@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Code2, Smartphone, Server, Database } from 'lucide-react';
 
 const About = () => {
     const textVariants = {

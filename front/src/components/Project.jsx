@@ -188,19 +188,20 @@ const Project = () => {
     const [selectedProject, setSelectedProject] = useState(null);
 
     const languageColors = {
-        python: 'text-blue-500',
-        react: 'text-cyan-400',
-        angular: 'text-red-500',
-        typescript: 'text-blue-600',
-        mongodb: 'text-green-500',
-        api: 'text-purple-500',
-        tailwind: 'text-teal-400',
-        bash: 'text-red-700',
-        docker: 'text-sky-500',
-        php: 'text-indigo-400',
-        sql: 'text-orange-400',
-        springboot: 'text-green-400',
-        supabase: '',
+        python: 'text-[#3776AB]',      // Bleu Python officiel
+        react: 'text-[#61DAFB]',       // Bleu clair React officiel
+        angular: 'text-[#DD0031]',     // Rouge Angular officiel
+        typescript: 'text-[#007ACC]',  // Bleu TypeScript officiel
+        mongodb: 'text-[#47A248]',     // Vert MongoDB officiel
+        api: 'text-[#9B57B6]',        // Violet distinct pour API
+        tailwind: 'text-[#38B2AC]',   // Turquoise Tailwind officiel
+        bash: 'text-[#4EAA25]',       // Vert Terminal
+        docker: 'text-[#2496ED]',     // Bleu Docker officiel
+        php: 'text-[#777BB4]',        // Violet PHP officiel
+        sql: 'text-[#F29111]',        // Orange SQL
+        springboot: 'text-[#6DB33F]', // Vert Spring officiel
+        supabase: 'text-[#3ECF8E]',   // Vert Supabase officiel
+        postgres: 'text-[#336791]'    // Bleu PostgreSQL officiel
     };
 
     const awardedProjects = projectData.projects.filter(project => project.isAwardWinner);
