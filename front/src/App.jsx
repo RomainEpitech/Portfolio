@@ -5,6 +5,7 @@ import Project from './components/Project'
 import StarryBackground from './components/StarryBackground'
 import Timeline from './components/Timejine'
 import Expertise from './components/Expertise'
+import Skills from './components/Skills'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <About />
       <Expertise />
+      <Skills />
       <Timeline />
       <Project />
     </>
