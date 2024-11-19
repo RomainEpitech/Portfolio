@@ -95,6 +95,7 @@
             "fullDescription": "Lauréat d'un hackaton interne au sein d'Epitech, Uniteam est un projet visant a palié aux en jeux de problemes de gestions des disponibilitées des salles, des emploies du temps etc. Uniteam propose donc de réserver des salles pour des groupes de personnes ou pour des entretiens, et d'observer a la fois son emploie du temps personnel ainsi que les salles disponibles à la réservations pour X durée.",
             "image": "/imgs/Uniteam.avif",
             "gallery": [
+                "/imgs/Uniteam_team.jpeg",
                 "/imgs/Uniteam_Calendar.avif"
             ],
             "tags": ["Python", "React", "Supabase", "Docker"],

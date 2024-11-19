@@ -39,7 +39,8 @@ const StarryBackground = () => {
                 shootingStar.style.top = `${Math.random() * 70}%`;
                 shootingStar.style.right = '0';
                 document.body.appendChild(shootingStar);
-                
+                document.getElementById('stars-container').appendChild(shootingStar);
+    
                 setTimeout(() => {
                     shootingStar.remove();
                 }, 3000);
@@ -85,7 +86,7 @@ const StarryBackground = () => {
                     width: 100%;
                     height: 100%;
                     pointer-events: none;
-                    z-index: -1;
+                    z-index: -99;
                     background: linear-gradient(to bottom, 
                         #0a0510 0%,
                         #12102e 25%,
@@ -164,6 +165,7 @@ const StarryBackground = () => {
                         0 0 20px rgba(255,255,255,0.3);
                     animation: shooting 3s linear forwards;
                     opacity: 0;
+                    z-index: -2;
                 }
 
                 @keyframes twinkle {
