@@ -49,7 +49,6 @@ const SkillPlanet = ({ skill, color, delay, svgContent }) => {
             }}
         />
 
-        {/* Nom de la compétence */}
         <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}

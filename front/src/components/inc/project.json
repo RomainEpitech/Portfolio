@@ -29,7 +29,7 @@
             "fullDescription": "Horizon à vu le jour en tant que simple projet d'Epitech sur 3 semaines et pourtant ce projet m'a tellement inspiré et passioné que j'ai voulu allé plus loin, Horizon est mon projet coup de coeur dans le quel je cherche a la main de faire un framework capable de repousser les limites du web PHP en offrant une liberté infinie. \b\r ",
             "image": "/imgs/Horizon.png",
             "gallery": [
-                "/chemin/vers/image1.jpg",
+                "/imgs/Horizon_landing.png",
                 "/chemin/vers/image2.jpg",
                 "/chemin/vers/image3.jpg",
                 "/chemin/vers/image4.jpg"
